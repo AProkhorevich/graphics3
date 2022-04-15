@@ -6,7 +6,7 @@ from shared import movePoint
 def reflection(a):
     a.reverse()
 
-
+# проверка что прямая лежит под прямой y = x
 def correct_angle(a, b):
     x = abs(a[0] - b[0])
     y = abs(a[1] - b[1])
@@ -27,12 +27,15 @@ def reflectionOY(a):
 def line():
     a = [int(x) for x in input().split()]
     b = [int(x) for x in input().split()]
+    # иксовые координаты
     A = [a[0], b[0]]
+    # игрековые
     B = [a[1], b[1]]
     oper = []
 
     ###############################Геом преобразования###############################
     if a[0] != 0 or a[1] != 0:
+        # смещаем начало координат
         dx = -a[0]
         dy = -a[1]
         a = movePoint(a, dx)
@@ -43,7 +46,8 @@ def line():
         B1 = [a[1], b[1]]
         oper.append({'move': (dx, dy)})
 
-    # Если точка находится в 3/4
+    # Если точка находится в III
+    # отражаем по ОХ
     if a[1] < 0 or b[1] < 0:
         reflectionOX(a)
         reflectionOX(b)
@@ -87,6 +91,8 @@ def line():
     for i in range(len(X)):
         yxEnd.append([X[i], Y[i]])
 
+
+    # откатываем операции в обратном порядке
     for i in oper[::-1]:
         for h in i:
             if h == 'yx':
