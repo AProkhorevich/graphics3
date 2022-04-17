@@ -10,8 +10,8 @@ def circle():
     dx = centre[0]
     dy = centre[1]
     # подвинули в центр
-    movePoint(centre, -dx)
-    movePoint(centre, 0, -dy)
+    # movePoint(centre, -dx)
+    movePoint(centre, -dx, -dy)
 
     R = float(input("Enter the radius of the circle:\n"))
     d = 1 - R
@@ -71,7 +71,6 @@ def circle():
         Xe[i] += dx
         Ye[i] += dy
 
-    plt.title('Алгоритмы Брезенхема растеризации отрезка и окружности')
     fig = plt.figure(1)
     ax = fig.gca()
     locatorX = matplotlib.ticker.MultipleLocator(base=1)
@@ -80,10 +79,10 @@ def circle():
     ax.yaxis.set_major_locator(locatorY)
     ax.grid()
     ax.scatter(Xe, Ye)
-    m = abs(max(centre)) + (2*R)
-    # plt.xlim(-1*m, m)
-    # plt.ylim(-1*m, m)
     plt.axis('equal')
+    m = abs(max(centre)) + (2*R)
+    plt.xlim(-1*m, m)
+    plt.ylim(-1*m, m)
 
     plt.show()
 
